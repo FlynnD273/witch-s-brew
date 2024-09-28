@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ci2egn8uu3ek"]
+
+[node name="D_Liquid" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1200.0
+offset_bottom = 100.0
+color = Color(1, 0.933333, 0.498039, 1)

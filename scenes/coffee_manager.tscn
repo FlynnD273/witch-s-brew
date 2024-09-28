@@ -1,0 +1,134 @@
+[gd_scene load_steps=17 format=3 uid="uid://c62wgq1qu2jqe"]
+
+[ext_resource type="Script" path="res://scripts/coffee.gd" id="1_bfqwn"]
+[ext_resource type="Texture2D" uid="uid://drxadalm7nh1w" path="res://images/a.png" id="2_jivy0"]
+[ext_resource type="Texture2D" uid="uid://115kwuwaxeti" path="res://images/background.png" id="2_r7ytm"]
+[ext_resource type="Script" path="res://scripts/ingredient_controller.gd" id="3_ap07x"]
+[ext_resource type="Texture2D" uid="uid://c8jurvf0kd4l" path="res://images/cauldron_mask.png" id="3_t6ofw"]
+[ext_resource type="Texture2D" uid="uid://c0c4uob07e1r3" path="res://images/b.png" id="4_jqltf"]
+[ext_resource type="Script" path="res://scripts/liquids.gd" id="4_lbaw0"]
+[ext_resource type="Texture2D" uid="uid://cbnwxfkk20fdb" path="res://images/c.png" id="5_iq0hr"]
+[ext_resource type="Texture2D" uid="uid://1ju438gw7ptr" path="res://images/cauldron_shading.png" id="5_phjue"]
+[ext_resource type="Texture2D" uid="uid://dguwbsgm84pye" path="res://images/d.png" id="6_uphgh"]
+[ext_resource type="PackedScene" uid="uid://bduby6k4bqake" path="res://scenes/a_liquid.tscn" id="7_keah1"]
+[ext_resource type="Theme" uid="uid://cjx2o6xxwrd6q" path="res://default_theme.tres" id="7_sdjkw"]
+[ext_resource type="PackedScene" uid="uid://dhalk1b52ytxd" path="res://scenes/b_liquid.tscn" id="9_gtuxi"]
+[ext_resource type="PackedScene" uid="uid://svn6sei8r3l4" path="res://scenes/c_liquid.tscn" id="11_gl3gm"]
+[ext_resource type="PackedScene" uid="uid://ci2egn8uu3ek" path="res://scenes/d_liquid.tscn" id="13_it3s2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yp0uh"]
+blend_mode = 3
+
+[node name="Coffee" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_bfqwn")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+texture = ExtResource("2_r7ytm")
+
+[node name="Liquids" type="TextureRect" parent="."]
+clip_children = 1
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+texture = ExtResource("3_t6ofw")
+script = ExtResource("4_lbaw0")
+
+[node name="CauldronShading" type="TextureRect" parent="."]
+material = SubResource("CanvasItemMaterial_yp0uh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_phjue")
+
+[node name="IngredientList" type="HFlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 150.0
+grow_horizontal = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="A" type="TextureButton" parent="IngredientList"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture_normal = ExtResource("2_jivy0")
+stretch_mode = 5
+script = ExtResource("3_ap07x")
+type = null
+liquid = ExtResource("7_keah1")
+
+[node name="B" type="TextureButton" parent="IngredientList"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture_normal = ExtResource("4_jqltf")
+stretch_mode = 5
+script = ExtResource("3_ap07x")
+type = 1
+liquid = ExtResource("9_gtuxi")
+
+[node name="C" type="TextureButton" parent="IngredientList"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture_normal = ExtResource("5_iq0hr")
+stretch_mode = 5
+script = ExtResource("3_ap07x")
+type = 2
+liquid = ExtResource("11_gl3gm")
+
+[node name="D" type="TextureButton" parent="IngredientList"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture_normal = ExtResource("6_uphgh")
+stretch_mode = 5
+script = ExtResource("3_ap07x")
+type = 3
+liquid = ExtResource("13_it3s2")
+
+[node name="ServeButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -221.0
+offset_top = -124.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("7_sdjkw")
+text = "Serve!"
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -124.0
+offset_right = 256.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme = ExtResource("7_sdjkw")
+text = "Restart"
+
+[connection signal="on_reset" from="." to="Liquids" method="_on_coffee_on_reset"]

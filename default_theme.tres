@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cjx2o6xxwrd6q"]
+
+[ext_resource type="FontFile" uid="uid://cbh4nlxd3mo82" path="res://fonts/DancingScript-VariableFont_wght.ttf" id="1_qei1o"]
+
+[resource]
+default_font = ExtResource("1_qei1o")
+default_font_size = 96
