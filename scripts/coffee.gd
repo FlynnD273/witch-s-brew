@@ -2,19 +2,21 @@ extends Control
 
 class_name Coffee
 
-static var instance: Coffee = null
-
-var default_theme: Theme = preload("res://default_theme.tres")
-
-signal on_reset
-signal on_serve
-
 enum Ingredient {
   A,
   B,
   C,
   D,
 }
+
+static var instance: Coffee = null
+
+const default_theme: Theme = preload("res://default_theme.tres")
+var recipes: Array[Recipe] = []
+
+signal on_reset
+signal on_serve
+
 
 var current_ingredients: Array[Ingredient] = []
 
@@ -26,6 +28,13 @@ func _ready() -> void:
   Coffee.instance = self
   $RestartButton.pressed.connect(reset)
   $ServeButton.pressed.connect(serve)
+  
+  for recipe in $Recipes.get_children():
+    if is_instance_of(recipe, Recipe):
+      recipes.append(recipe)
+
+  print(recipes)
+
 
 func add_ingredient(type: Ingredient, liquid: PackedScene) -> void:
   current_ingredients.append(type)
@@ -38,22 +47,19 @@ func add_ingredient(type: Ingredient, liquid: PackedScene) -> void:
 
   print("[", ", ".join(names), "]")
 
-func is_recipe_match(recipe: Array[Ingredient]) -> bool:
-  print(current_ingredients)
-  print(recipe)
-  if recipe.size() != current_ingredients.size():
-    return false
-
-  recipe = recipe.duplicate()
-
+func get_recipe() -> Recipe:
+  var ingredients_dict := {}
   for i in current_ingredients:
-    var index := recipe.find(i)
-    if index == -1:
-      return false
-    recipe.remove_at(index)
-    print(recipe)
+    if ingredients_dict.has(i):
+      ingredients_dict[i] += 1
+    else:
+      ingredients_dict[i] = 1
 
-  return true
+  for r in recipes:
+    if ingredients_dict == r.ingredients_dict:
+      return r
+
+  return null
 
 func reset() -> void:
   current_ingredients = []
@@ -63,8 +69,9 @@ func serve() -> void:
   print("served")
   var dialog := AcceptDialog.new()
   dialog.theme = default_theme
-  if is_recipe_match([Ingredient.A, Ingredient.A, Ingredient.C]):
-    dialog.dialog_text = "This is good!"
+  var recipe := get_recipe()
+  if recipe:
+    dialog.dialog_text = "I like this %s drink!" % recipe.title
   else:
     dialog.dialog_text = "I don't like this :("
   dialog.title = ""

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c62wgq1qu2jqe"]
+[gd_scene load_steps=24 format=3 uid="uid://c62wgq1qu2jqe"]
 
 [ext_resource type="Script" path="res://scripts/coffee.gd" id="1_bfqwn"]
 [ext_resource type="Texture2D" uid="uid://drxadalm7nh1w" path="res://images/a.png" id="2_jivy0"]
@@ -15,6 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://dhalk1b52ytxd" path="res://scenes/b_liquid.tscn" id="9_gtuxi"]
 [ext_resource type="PackedScene" uid="uid://svn6sei8r3l4" path="res://scenes/c_liquid.tscn" id="11_gl3gm"]
 [ext_resource type="PackedScene" uid="uid://ci2egn8uu3ek" path="res://scenes/d_liquid.tscn" id="13_it3s2"]
+[ext_resource type="Script" path="res://scripts/recipe.gd" id="16_0td6w"]
+[ext_resource type="Texture2D" uid="uid://vf7mc2jsyyw2" path="res://images/cup.png" id="17_a1eoo"]
+[ext_resource type="Script" path="res://scripts/recipe_display.gd" id="17_bp271"]
+[ext_resource type="Texture2D" uid="uid://bscs8cgrsd1a5" path="res://images/arrow.png" id="18_55hmj"]
+[ext_resource type="FontFile" uid="uid://bctcfq1s06kh2" path="res://fonts/DancingScript-Bold.ttf" id="18_gptto"]
+[ext_resource type="Script" path="res://scripts/button_dim.gd" id="19_340vs"]
+[ext_resource type="BitMap" uid="uid://bsu8qqngubg7m" path="res://images/arrow_mask.png" id="19_rtasn"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yp0uh"]
 blend_mode = 3
@@ -131,4 +138,76 @@ grow_vertical = 0
 theme = ExtResource("7_sdjkw")
 text = "Restart"
 
+[node name="Recipes" type="Node" parent="."]
+
+[node name="Basic" type="Node" parent="Recipes"]
+script = ExtResource("16_0td6w")
+ingredients = Array[int]([0, 0, 2])
+
+[node name="Fancy" type="Node" parent="Recipes"]
+script = ExtResource("16_0td6w")
+ingredients = Array[int]([1, 1, 2, 0])
+image = ExtResource("17_a1eoo")
+
+[node name="Even Fancier" type="Node" parent="Recipes"]
+script = ExtResource("16_0td6w")
+ingredients = Array[int]([0, 1, 2, 3])
+
+[node name="RecipeDisplay" type="Node" parent="."]
+script = ExtResource("17_bp271")
+
+[node name="Drawing" type="Sprite2D" parent="RecipeDisplay"]
+position = Vector2(3128, 1266)
+rotation = 0.0628319
+scale = Vector2(1.145, 1.145)
+skew = 0.300197
+texture = ExtResource("17_a1eoo")
+
+[node name="Text" type="RichTextLabel" parent="RecipeDisplay"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2349.0
+offset_top = 632.0
+offset_right = -885.0
+offset_bottom = -509.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.244346
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_sdjkw")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("18_gptto")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Basic[/center]
+
+- 2x A
+- 1x C"
+
+[node name="NextButton" type="TextureButton" parent="RecipeDisplay"]
+offset_left = 3531.0
+offset_top = 1187.0
+offset_right = 4043.0
+offset_bottom = 1699.0
+rotation = 0.253073
+scale = Vector2(0.65, 0.65)
+texture_normal = ExtResource("18_55hmj")
+texture_click_mask = ExtResource("19_rtasn")
+script = ExtResource("19_340vs")
+
+[node name="PrevButton" type="TextureButton" parent="RecipeDisplay"]
+offset_left = 2198.0
+offset_top = 914.0
+offset_right = 2710.0
+offset_bottom = 1426.0
+rotation = 0.253073
+scale = Vector2(-0.65, 0.65)
+texture_normal = ExtResource("18_55hmj")
+texture_click_mask = ExtResource("19_rtasn")
+script = ExtResource("19_340vs")
+
 [connection signal="on_reset" from="." to="Liquids" method="_on_coffee_on_reset"]
+[connection signal="pressed" from="RecipeDisplay/NextButton" to="RecipeDisplay" method="_on_next_button_pressed"]
+[connection signal="pressed" from="RecipeDisplay/PrevButton" to="RecipeDisplay" method="_on_prev_button_pressed"]
