@@ -13,12 +13,14 @@ static var instance: Coffee = null
 
 const default_theme: Theme = preload("res://default_theme.tres")
 var recipes: Array[Recipe] = []
+var current_ingredients: Array[Ingredient] = []
+
+@onready var ingredient_label = $IngredientLabel
 
 signal on_reset
 signal on_serve
 
 
-var current_ingredients: Array[Ingredient] = []
 
 
 # Called when the node enters the scene tree for the first time.

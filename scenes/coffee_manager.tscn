@@ -1,10 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://c62wgq1qu2jqe"]
+[gd_scene load_steps=29 format=3 uid="uid://c62wgq1qu2jqe"]
 
 [ext_resource type="Script" path="res://scripts/coffee.gd" id="1_bfqwn"]
 [ext_resource type="Texture2D" uid="uid://drxadalm7nh1w" path="res://images/a.png" id="2_jivy0"]
 [ext_resource type="Texture2D" uid="uid://115kwuwaxeti" path="res://images/background.png" id="2_r7ytm"]
 [ext_resource type="Script" path="res://scripts/ingredient_controller.gd" id="3_ap07x"]
-[ext_resource type="Texture2D" uid="uid://c8jurvf0kd4l" path="res://images/cauldron_mask.png" id="3_t6ofw"]
+[ext_resource type="Texture2D" uid="uid://b3wg1vlk4tlof" path="res://images/cauldron.png" id="3_rty0y"]
 [ext_resource type="Texture2D" uid="uid://c0c4uob07e1r3" path="res://images/b.png" id="4_jqltf"]
 [ext_resource type="Script" path="res://scripts/liquids.gd" id="4_lbaw0"]
 [ext_resource type="Texture2D" uid="uid://cbnwxfkk20fdb" path="res://images/c.png" id="5_iq0hr"]
@@ -21,10 +21,30 @@
 [ext_resource type="Texture2D" uid="uid://bscs8cgrsd1a5" path="res://images/arrow.png" id="18_55hmj"]
 [ext_resource type="FontFile" uid="uid://bctcfq1s06kh2" path="res://fonts/DancingScript-Bold.ttf" id="18_gptto"]
 [ext_resource type="Script" path="res://scripts/button_dim.gd" id="19_340vs"]
+[ext_resource type="Texture2D" uid="uid://d0fl66a5y1id8" path="res://images/book.png" id="19_g5st4"]
 [ext_resource type="BitMap" uid="uid://bsu8qqngubg7m" path="res://images/arrow_mask.png" id="19_rtasn"]
+[ext_resource type="Script" path="res://scripts/ingredient_label.gd" id="24_v6iva"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yp0uh"]
 blend_mode = 3
+
+[sub_resource type="InputEventKey" id="InputEventKey_chdca"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_cbiov"]
+events = [SubResource("InputEventKey_chdca")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o27f"]
+bg_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
 
 [node name="Coffee" type="Control"]
 layout_mode = 3
@@ -48,7 +68,7 @@ clip_children = 1
 layout_mode = 0
 offset_right = 3840.0
 offset_bottom = 2160.0
-texture = ExtResource("3_t6ofw")
+texture = ExtResource("3_rty0y")
 script = ExtResource("4_lbaw0")
 
 [node name="CauldronShading" type="TextureRect" parent="."]
@@ -62,6 +82,7 @@ grow_vertical = 2
 texture = ExtResource("5_phjue")
 
 [node name="IngredientList" type="HFlowContainer" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -79,7 +100,6 @@ layout_mode = 2
 texture_normal = ExtResource("2_jivy0")
 stretch_mode = 5
 script = ExtResource("3_ap07x")
-type = null
 liquid = ExtResource("7_keah1")
 
 [node name="B" type="TextureButton" parent="IngredientList"]
@@ -138,6 +158,17 @@ grow_vertical = 0
 theme = ExtResource("7_sdjkw")
 text = "Restart"
 
+[node name="RecipesButton" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 273.0
+offset_bottom = 144.0
+theme = ExtResource("7_sdjkw")
+shortcut = SubResource("Shortcut_cbiov")
+text = "Recipes"
+
 [node name="Recipes" type="Node" parent="."]
 
 [node name="Basic" type="Node" parent="Recipes"]
@@ -153,27 +184,54 @@ image = ExtResource("17_a1eoo")
 script = ExtResource("16_0td6w")
 ingredients = Array[int]([0, 1, 2, 3])
 
-[node name="RecipeDisplay" type="Node" parent="."]
+[node name="RecipeDisplay" type="Control" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 3840.0
+offset_bottom = 2160.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("17_bp271")
 
-[node name="Drawing" type="Sprite2D" parent="RecipeDisplay"]
-position = Vector2(3128, 1266)
-rotation = 0.0628319
-scale = Vector2(1.145, 1.145)
-skew = 0.300197
+[node name="Book" type="TextureRect" parent="RecipeDisplay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_g5st4")
+
+[node name="Drawing" type="TextureRect" parent="RecipeDisplay"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -512.0
+offset_right = 563.0
+offset_bottom = -6.10352e-05
+scale = Vector2(1.41, 1.41)
 texture = ExtResource("17_a1eoo")
 
 [node name="Text" type="RichTextLabel" parent="RecipeDisplay"]
-anchors_preset = -1
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2349.0
-offset_top = 632.0
-offset_right = -885.0
-offset_bottom = -509.0
+offset_left = -765.0
+offset_top = -633.0
+offset_right = -3857.0
+offset_bottom = -1682.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 0.244346
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("7_sdjkw")
@@ -187,27 +245,35 @@ text = "[center]Basic[/center]
 - 1x C"
 
 [node name="NextButton" type="TextureButton" parent="RecipeDisplay"]
-offset_left = 3531.0
-offset_top = 1187.0
-offset_right = 4043.0
-offset_bottom = 1699.0
-rotation = 0.253073
+offset_left = 952.8
+offset_top = -256.0
+offset_right = 1464.8
+offset_bottom = 256.0
 scale = Vector2(0.65, 0.65)
 texture_normal = ExtResource("18_55hmj")
 texture_click_mask = ExtResource("19_rtasn")
 script = ExtResource("19_340vs")
 
 [node name="PrevButton" type="TextureButton" parent="RecipeDisplay"]
-offset_left = 2198.0
-offset_top = 914.0
-offset_right = 2710.0
-offset_bottom = 1426.0
-rotation = 0.253073
+offset_left = -955.2
+offset_top = -256.0
+offset_right = -443.2
+offset_bottom = 256.0
 scale = Vector2(-0.65, 0.65)
 texture_normal = ExtResource("18_55hmj")
 texture_click_mask = ExtResource("19_rtasn")
 script = ExtResource("19_340vs")
 
+[node name="IngredientLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("7_sdjkw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5o27f")
+text = "A"
+script = ExtResource("24_v6iva")
+
 [connection signal="on_reset" from="." to="Liquids" method="_on_coffee_on_reset"]
+[connection signal="pressed" from="RecipesButton" to="RecipeDisplay" method="toggle_visibility"]
 [connection signal="pressed" from="RecipeDisplay/NextButton" to="RecipeDisplay" method="_on_next_button_pressed"]
 [connection signal="pressed" from="RecipeDisplay/PrevButton" to="RecipeDisplay" method="_on_prev_button_pressed"]

@@ -1,7 +1,7 @@
 extends TextureRect
 
 var inc_height: float = 100
-var start_pos := Vector2(500, 1900)
+var start_pos := Vector2(1300, 1900)
 @export var reset_duration: float = 1
 @export var pour_duration: float = 0.5
 
@@ -21,6 +21,8 @@ func _on_coffee_on_reset() -> void:
 
 
 func add_ingredient(new_ing: PackedScene) -> void:
+  if ingredients.size() >= 10:
+    return
   var i: Node2D = new_ing.instantiate()
   i.position = start_pos + Vector2.UP * inc_height * (ingredients.size() - 1)
   add_child(i)
