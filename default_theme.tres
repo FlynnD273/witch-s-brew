@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://cjx2o6xxwrd6q"]
 
-[ext_resource type="FontFile" uid="uid://c6t4eeh7yhm0t" path="res://fonts/DancingScript-Medium.ttf" id="1_gcyna"]
+[ext_resource type="FontFile" uid="uid://c6t4eeh7yhm0t" path="res://fonts/dancing-script/DancingScript-Medium.ttf" id="1_yoab3"]
 
 [resource]
-default_font = ExtResource("1_gcyna")
+default_font = ExtResource("1_yoab3")
 default_font_size = 96

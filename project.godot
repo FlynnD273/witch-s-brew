@@ -22,19 +22,64 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"korak": "res://dialogue/characters/korak.dch",
-"you": "res://dialogue/characters/you.dch"
+"darnery": "res://dialogue/characters/darnery.dch",
+"solephanie": "res://dialogue/characters/solephanie.dch"
 }
 directories/dtl_directory={
-"test_timeline": "res://dialogue/timelines/test_timeline.dtl"
+"darnery_accept": "res://dialogue/timelines/day2/darnery_accept.dtl",
+"darnery_intro": "res://dialogue/timelines/day2/darnery_intro.dtl",
+"darnery_reject": "res://dialogue/timelines/day2/darnery_reject.dtl",
+"day3/darnery_reject": "res://dialogue/timelines/darnery_reject.dtl",
+"intro": "res://dialogue/timelines/day1/intro.dtl",
+"intro_mix1": "res://dialogue/timelines/day1/intro_mix1.dtl",
+"intro_mix4": "res://dialogue/timelines/day1/intro_mix4.dtl",
+"intro_mix5": "res://dialogue/timelines/day1/intro_mix5.dtl",
+"intro_reject": "res://dialogue/timelines/day1/intro_reject.dtl",
+"sol_1_4_1_5_1": "res://dialogue/timelines/day3/sol_1_4_1_5_1.dtl",
+"sol_2_4_1": "res://dialogue/timelines/day3/sol_2_4_1.dtl",
+"sol_2_4_2": "res://dialogue/timelines/day3/sol_2_4_2.dtl",
+"sol_2_4_3": "res://dialogue/timelines/day3/sol_2_4_3.dtl",
+"sol_2_5_1": "res://dialogue/timelines/day3/sol_2_5_1.dtl",
+"sol_2_5_2": "res://dialogue/timelines/day3/sol_2_5_2.dtl",
+"sol_2_5_3": "res://dialogue/timelines/day3/sol_2_5_3.dtl",
+"sol_2_mix_4": "res://dialogue/timelines/day2/sol_2_mix_4.dtl",
+"sol_2_mix_5": "res://dialogue/timelines/day2/sol_2_mix_5.dtl",
+"sol_3_4_1": "res://dialogue/timelines/day4/sol_3_4_1.dtl",
+"sol_3_4_1_reject": "res://dialogue/timelines/day4/sol_3_4_1_reject.dtl",
+"sol_3_4_2": "res://dialogue/timelines/day4/sol_3_4_2.dtl",
+"sol_3_5_1": "res://dialogue/timelines/day4/sol_3_5_1.dtl",
+"sol_3_5_1_reject": "res://dialogue/timelines/day4/sol_3_5_1_reject.dtl",
+"sol_3_5_2": "res://dialogue/timelines/day4/sol_3_5_2.dtl",
+"sol_reject": "res://dialogue/timelines/sol_reject.dtl"
 }
 variables={}
+layout/style_list=["res://dialogic_theme.tres"]
+layout/default_style="res://dialogic_theme.tres"
+extensions_folder="res://addons/dialogic_additions"
+text/letter_speed=0.01
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/advance_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/join_default_wait=true
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/cross_fade_default_length=0.5
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
 
 [display]
 
 window/size/viewport_width=3840
 window/size/viewport_height=2160
-window/size/mode=3
+window/size/mode=4
 window/stretch/mode="viewport"
 
 [editor_plugins]
