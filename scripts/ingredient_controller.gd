@@ -1,7 +1,11 @@
 extends TextureButton
 
-@export var type: Coffee.Ingredient = Coffee.Ingredient.A
+class_name IngredientController
+
+@export var type: Coffee.Ingredient = Coffee.Ingredient.SteamedWishes
 @export var liquid: PackedScene = null
+@export_multiline var description: String = ""
+
 var start_size: float
 var hover_scale: float = 1.25
 var was_paused: bool = false
@@ -55,12 +59,12 @@ func _set_focused(newValue: bool) -> void:
   if is_focused:
     var tween := create_tween()
     tween.tween_property(self, "custom_minimum_size", Vector2(start_size * hover_scale, size.y), 0.25).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT)
-    Coffee.instance.ingredient_label.ingredient = type
+    Coffee.instance.ingredient_label.ingredient = self
     Coffee.instance.ingredient_label.show()
   else:
     var tween := create_tween()
     tween.tween_property(self, "custom_minimum_size", Vector2(start_size, size.y), 0.25).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT)
-    if Coffee.instance.ingredient_label.ingredient == type:
+    if Coffee.instance.ingredient_label.ingredient == self:
       Coffee.instance.ingredient_label.hide()
 
 func _get_focused() -> bool:

@@ -4,8 +4,8 @@ extends Label
 
 @onready var viewport := get_viewport()
 
-var ingredient: Coffee.Ingredient: set = _set_ingredient, get = _get_ingredient
-var _ingredient: Coffee.Ingredient
+var ingredient: IngredientController: set = _set_ingredient, get = _get_ingredient
+var _ingredient: IngredientController
 
 func _ready() -> void:
   hide()
@@ -14,9 +14,11 @@ func _process(_delta: float) -> void:
   position = viewport.get_mouse_position() + offset
 
 
-func _set_ingredient(newValue: Coffee.Ingredient) -> void:
+func _set_ingredient(newValue: IngredientController) -> void:
   _ingredient = newValue
-  text = Coffee.Ingredient.keys()[ingredient]
+  var ing_name: String = Coffee.Ingredient.keys()[ingredient.type].capitalize()
+  text = "%s\n%s" % [ing_name, ingredient.description]
+  size = theme.get_font("", "").get_multiline_string_size(text)
 
-func _get_ingredient() -> Coffee.Ingredient:
+func _get_ingredient() -> IngredientController:
   return _ingredient

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c62wgq1qu2jqe"]
+[gd_scene load_steps=17 format=3 uid="uid://c62wgq1qu2jqe"]
 
 [ext_resource type="Script" path="res://scripts/coffee.gd" id="1_bfqwn"]
 [ext_resource type="Texture2D" uid="uid://drxadalm7nh1w" path="res://images/a.png" id="2_jivy0"]
@@ -9,31 +9,14 @@
 [ext_resource type="Script" path="res://scripts/liquids.gd" id="4_lbaw0"]
 [ext_resource type="Texture2D" uid="uid://cbnwxfkk20fdb" path="res://images/c.png" id="5_iq0hr"]
 [ext_resource type="Texture2D" uid="uid://1ju438gw7ptr" path="res://images/cauldron_shading.png" id="5_phjue"]
-[ext_resource type="Texture2D" uid="uid://dguwbsgm84pye" path="res://images/d.png" id="6_uphgh"]
 [ext_resource type="PackedScene" uid="uid://bduby6k4bqake" path="res://scenes/a_liquid.tscn" id="7_keah1"]
 [ext_resource type="Theme" uid="uid://cjx2o6xxwrd6q" path="res://default_theme.tres" id="7_sdjkw"]
 [ext_resource type="PackedScene" uid="uid://dhalk1b52ytxd" path="res://scenes/b_liquid.tscn" id="9_gtuxi"]
 [ext_resource type="PackedScene" uid="uid://svn6sei8r3l4" path="res://scenes/c_liquid.tscn" id="11_gl3gm"]
-[ext_resource type="PackedScene" uid="uid://ci2egn8uu3ek" path="res://scenes/d_liquid.tscn" id="13_it3s2"]
-[ext_resource type="Script" path="res://scripts/recipe.gd" id="16_0td6w"]
-[ext_resource type="Texture2D" uid="uid://vf7mc2jsyyw2" path="res://images/cup.png" id="17_a1eoo"]
-[ext_resource type="Script" path="res://scripts/recipe_display.gd" id="17_bp271"]
-[ext_resource type="Texture2D" uid="uid://bscs8cgrsd1a5" path="res://images/arrow.png" id="18_55hmj"]
-[ext_resource type="FontFile" uid="uid://bctcfq1s06kh2" path="res://fonts/DancingScript-Bold.ttf" id="18_gptto"]
-[ext_resource type="Script" path="res://scripts/button_dim.gd" id="19_340vs"]
-[ext_resource type="Texture2D" uid="uid://d0fl66a5y1id8" path="res://images/book.png" id="19_g5st4"]
-[ext_resource type="BitMap" uid="uid://bsu8qqngubg7m" path="res://images/arrow_mask.png" id="19_rtasn"]
 [ext_resource type="Script" path="res://scripts/ingredient_label.gd" id="24_v6iva"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yp0uh"]
 blend_mode = 3
-
-[sub_resource type="InputEventKey" id="InputEventKey_chdca"]
-device = -1
-keycode = 4194305
-
-[sub_resource type="Shortcut" id="Shortcut_cbiov"]
-events = [SubResource("InputEventKey_chdca")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o27f"]
 bg_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
@@ -48,24 +31,18 @@ expand_margin_bottom = 5.0
 
 [node name="Coffee" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+anchors_preset = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
 script = ExtResource("1_bfqwn")
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
 offset_right = 3840.0
 offset_bottom = 2160.0
 texture = ExtResource("2_r7ytm")
 
 [node name="Liquids" type="TextureRect" parent="."]
 clip_children = 1
-layout_mode = 0
 offset_right = 3840.0
 offset_bottom = 2160.0
 texture = ExtResource("3_rty0y")
@@ -101,6 +78,8 @@ texture_normal = ExtResource("2_jivy0")
 stretch_mode = 5
 script = ExtResource("3_ap07x")
 liquid = ExtResource("7_keah1")
+description = "- Emotional
+- Sweet & Rich"
 
 [node name="B" type="TextureButton" parent="IngredientList"]
 custom_minimum_size = Vector2(0, 150)
@@ -110,6 +89,8 @@ stretch_mode = 5
 script = ExtResource("3_ap07x")
 type = 1
 liquid = ExtResource("9_gtuxi")
+description = "- Invigorating
+- Sour & Citrusy"
 
 [node name="C" type="TextureButton" parent="IngredientList"]
 custom_minimum_size = Vector2(0, 150)
@@ -119,15 +100,8 @@ stretch_mode = 5
 script = ExtResource("3_ap07x")
 type = 2
 liquid = ExtResource("11_gl3gm")
-
-[node name="D" type="TextureButton" parent="IngredientList"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-texture_normal = ExtResource("6_uphgh")
-stretch_mode = 5
-script = ExtResource("3_ap07x")
-type = 3
-liquid = ExtResource("13_it3s2")
+description = "- Relaxing
+- Aromatic & Earthy"
 
 [node name="ServeButton" type="Button" parent="."]
 layout_mode = 1
@@ -158,122 +132,14 @@ grow_vertical = 0
 theme = ExtResource("7_sdjkw")
 text = "Restart"
 
-[node name="RecipesButton" type="Button" parent="."]
-process_mode = 3
-layout_mode = 1
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 273.0
-offset_bottom = 144.0
-theme = ExtResource("7_sdjkw")
-shortcut = SubResource("Shortcut_cbiov")
-text = "Recipes"
-
-[node name="Recipes" type="Node" parent="."]
-
-[node name="Basic" type="Node" parent="Recipes"]
-script = ExtResource("16_0td6w")
-ingredients = Array[int]([0, 0, 2])
-
-[node name="Fancy" type="Node" parent="Recipes"]
-script = ExtResource("16_0td6w")
-ingredients = Array[int]([1, 1, 2, 0])
-image = ExtResource("17_a1eoo")
-
-[node name="Even Fancier" type="Node" parent="Recipes"]
-script = ExtResource("16_0td6w")
-ingredients = Array[int]([0, 1, 2, 3])
-
-[node name="RecipeDisplay" type="Control" parent="."]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 3840.0
-offset_bottom = 2160.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("17_bp271")
-
-[node name="Book" type="TextureRect" parent="RecipeDisplay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1920.0
-offset_top = -1080.0
-offset_right = -1920.0
-offset_bottom = -1080.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("19_g5st4")
-
-[node name="Drawing" type="TextureRect" parent="RecipeDisplay"]
-layout_mode = 0
-offset_left = 51.0
-offset_top = -512.0
-offset_right = 563.0
-offset_bottom = -6.10352e-05
-scale = Vector2(1.41, 1.41)
-texture = ExtResource("17_a1eoo")
-
-[node name="Text" type="RichTextLabel" parent="RecipeDisplay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -765.0
-offset_top = -633.0
-offset_right = -3857.0
-offset_bottom = -1682.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("7_sdjkw")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("18_gptto")
-theme_override_font_sizes/normal_font_size = 120
-bbcode_enabled = true
-text = "[center]Basic[/center]
-
-- 2x A
-- 1x C"
-
-[node name="NextButton" type="TextureButton" parent="RecipeDisplay"]
-offset_left = 952.8
-offset_top = -256.0
-offset_right = 1464.8
-offset_bottom = 256.0
-scale = Vector2(0.65, 0.65)
-texture_normal = ExtResource("18_55hmj")
-texture_click_mask = ExtResource("19_rtasn")
-script = ExtResource("19_340vs")
-
-[node name="PrevButton" type="TextureButton" parent="RecipeDisplay"]
-offset_left = -955.2
-offset_top = -256.0
-offset_right = -443.2
-offset_bottom = 256.0
-scale = Vector2(-0.65, 0.65)
-texture_normal = ExtResource("18_55hmj")
-texture_click_mask = ExtResource("19_rtasn")
-script = ExtResource("19_340vs")
-
 [node name="IngredientLabel" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 754.0
+offset_bottom = 235.0
+mouse_filter = 1
 theme = ExtResource("7_sdjkw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5o27f")
-text = "A"
+text = "Steamed Wishes
+This is the description"
 script = ExtResource("24_v6iva")
 
 [connection signal="on_reset" from="." to="Liquids" method="_on_coffee_on_reset"]
-[connection signal="pressed" from="RecipesButton" to="RecipeDisplay" method="toggle_visibility"]
-[connection signal="pressed" from="RecipeDisplay/NextButton" to="RecipeDisplay" method="_on_next_button_pressed"]
-[connection signal="pressed" from="RecipeDisplay/PrevButton" to="RecipeDisplay" method="_on_prev_button_pressed"]
