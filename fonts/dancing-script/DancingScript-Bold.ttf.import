@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c6t4eeh7yhm0t"
-path="res://.godot/imported/DancingScript-Medium.ttf-4b5622dc1bb612af4b235a5f1b9aacac.fontdata"
+uid="uid://bctcfq1s06kh2"
+path="res://.godot/imported/DancingScript-Bold.ttf-2d75b55292e45e8b9082aa4138c7674c.fontdata"
 
 [deps]
 
-source_file="res://fonts/DancingScript-Medium.ttf"
-dest_files=["res://.godot/imported/DancingScript-Medium.ttf-4b5622dc1bb612af4b235a5f1b9aacac.fontdata"]
+source_file="res://fonts/dancing-script/DancingScript-Bold.ttf"
+dest_files=["res://.godot/imported/DancingScript-Bold.ttf-2d75b55292e45e8b9082aa4138c7674c.fontdata"]
 
 [params]
 

@@ -20,8 +20,6 @@ signal on_reset
 signal on_serve
 
 func _ready() -> void:
-  if Coffee.instance:
-    Coffee.instance.queue_free()
   Coffee.instance = self
   $RestartButton.pressed.connect(reset)
   $ServeButton.pressed.connect(serve)

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bctcfq1s06kh2"
-path="res://.godot/imported/DancingScript-Bold.ttf-01e54c25e7e9941425fe92f9db062b45.fontdata"
+uid="uid://bbtljx10bsilv"
+path="res://.godot/imported/ShantellSans-ExtraBoldItalic.ttf-0a7b8a6c50b3c420e0ad66548c38a297.fontdata"
 
 [deps]
 
-source_file="res://fonts/DancingScript-Bold.ttf"
-dest_files=["res://.godot/imported/DancingScript-Bold.ttf-01e54c25e7e9941425fe92f9db062b45.fontdata"]
+source_file="res://fonts/shantell-sans/ShantellSans-ExtraBoldItalic.ttf"
+dest_files=["res://.godot/imported/ShantellSans-ExtraBoldItalic.ttf-0a7b8a6c50b3c420e0ad66548c38a297.fontdata"]
 
 [params]
 
