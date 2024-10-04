@@ -30,3 +30,4 @@ func add_ingredient(new_ing: PackedScene) -> void:
   var tween = create_tween()
   tween.tween_property(i, "position", start_pos + Vector2.UP * inc_height * ingredients.size(), pour_duration).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
   ingredients.append(i)
+  await get_tree().create_timer(pour_duration).timeout

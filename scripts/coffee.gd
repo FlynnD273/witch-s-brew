@@ -28,7 +28,7 @@ func add_ingredient(type: Ingredient, liquid: PackedScene) -> void:
   if type in current_ingredients:
     return
   current_ingredients.append(type)
-  $Liquids.add_ingredient(liquid)
+  await $Liquids.add_ingredient(liquid)
   if Ingredient.Zestroot in current_ingredients and Ingredient.Mushmellow in current_ingredients:
     reset()
 
