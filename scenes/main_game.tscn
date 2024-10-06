@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds33g7qi31pyx"]
+[gd_scene load_steps=5 format=3 uid="uid://ds33g7qi31pyx"]
 
 [ext_resource type="Script" path="res://scripts/main_game.gd" id="1_wyfvg"]
 [ext_resource type="Script" path="res://scripts/transition.gd" id="2_siffl"]
 [ext_resource type="Theme" uid="uid://cjx2o6xxwrd6q" path="res://default_theme.tres" id="3_jgn6h"]
+[ext_resource type="Texture2D" uid="uid://c1cqqu70uind5" path="res://images/witchesroom.png" id="4_0yqql"]
 
 [node name="MainGame" type="Control"]
 layout_mode = 3
@@ -13,7 +14,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wyfvg")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0yqql")
+
 [node name="Transition" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

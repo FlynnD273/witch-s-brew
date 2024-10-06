@@ -40,6 +40,7 @@ func _process(_delta: float) -> void:
 
   init()
 
+  await get_tree().create_timer(1).timeout
   await day_zero()
 
   await new_day()

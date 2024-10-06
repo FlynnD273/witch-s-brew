@@ -1,0 +1,57 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://rmy0jj5rvqf6"]
+
+[sub_resource type="VisualShaderNodeTextureSDF" id="VisualShaderNodeTextureSDF_xojsg"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_48t1q"]
+input_name = "point_coord"
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_23ksl"]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeSDFRaymarch" id="VisualShaderNodeSDFRaymarch_7ok41"]
+output_port_for_preview = 0
+
+[sub_resource type="VisualShaderNodeVec2Constant" id="VisualShaderNodeVec2Constant_seqt1"]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+
+void fragment() {
+// Input:3
+	vec2 n_out3p0 = POINT_COORD;
+
+
+// TextureSDF:2
+		float n_out2p0 = texture_sdf(n_out3p0);
+
+
+// FloatConstant:4
+	float n_out4p0 = 1.000000;
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out2p0);
+	COLOR.a = n_out4p0;
+
+
+}
+"
+graph_offset = Vector2(-366.884, 75.8929)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(680, 180)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTextureSDF_xojsg")
+nodes/fragment/2/position = Vector2(-100, 140)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_48t1q")
+nodes/fragment/3/position = Vector2(-1160, 300)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatConstant_23ksl")
+nodes/fragment/4/position = Vector2(100, 500)
+nodes/fragment/5/node = SubResource("VisualShaderNodeSDFRaymarch_7ok41")
+nodes/fragment/5/position = Vector2(-460, 520)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVec2Constant_seqt1")
+nodes/fragment/6/position = Vector2(-1000, 640)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 2, 0, 0, 0, 4, 0, 0, 1, 3, 0, 5, 0, 6, 0, 5, 1)

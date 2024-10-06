@@ -1,5 +1,5 @@
 class_name DialogicPortrait
-extends Node
+extends Node2D
 
 ## Default portrait class. Should be extended by custom portraits.
 
