@@ -30,6 +30,7 @@ func init() -> void:
     blank_dict[i] = 0
   for chara in Character.values():
     characterStats[chara] = blank_dict.duplicate()
+  day = 0
 
 func _process(_delta: float) -> void:
   if should_init:
@@ -39,7 +40,9 @@ func _process(_delta: float) -> void:
 
   init()
 
-  await day_trans()
+  await day_zero()
+
+  await new_day()
   await day_one()
 
   await new_day()
@@ -83,13 +86,22 @@ func day_four() -> void:
     give_mix(Character.Solephanie, last_drink)
     await start_timeline("sol_3_5_2")
   elif characterStats[Character.Solephanie][4] == 2:
-    # TODO: Probably more dialogue here
-    # await start_timeline("sol_2_4_1_5_1")
-    pass
+    await start_timeline("sol_2_4_1_5_1")
+    var loop := true
+    while loop:
+      last_drink = await make_coffee()
+      loop = false
+      match last_drink:
+        4:
+          pass
+        _:
+          await start_timeline("sol_3_5_1_reject")
+          loop = true
+    give_mix(Character.Solephanie, last_drink)
+    await start_timeline("sol_2_4_1_5_2")
   else:
-    # TODO: Probably more dialogue here
-    # await start_timeline("sol_1_4_2_5_1")
-    pass
+    await start_timeline("sol_1_4_2_5_1")
+    await serve_sol()
 
 func day_three() -> void:
   if characterStats[Character.Solephanie][4] == 2:
@@ -150,6 +162,16 @@ func day_one() -> void:
         await start_timeline("intro_reject")
         loop = true
   give_mix(Character.Solephanie, last_drink)
+
+func day_zero() -> void:
+  await start_timeline("1")
+  var cof: Coffee = coffee_scene.instantiate()
+  get_tree().root.add_child(cof)
+  cof.show()
+  await start_timeline("2")
+  await cof.on_serve
+  cof.queue_free()
+  await start_timeline("3")
 
 
 
