@@ -1,22 +1,47 @@
-[gd_scene load_steps=17 format=3 uid="uid://c62wgq1qu2jqe"]
+[gd_scene load_steps=28 format=3 uid="uid://c62wgq1qu2jqe"]
 
 [ext_resource type="Script" path="res://scripts/coffee.gd" id="1_bfqwn"]
-[ext_resource type="Texture2D" uid="uid://115kwuwaxeti" path="res://images/background.png" id="2_r7ytm"]
+[ext_resource type="Texture2D" uid="uid://cp64wfgykdwiw" path="res://images/wiche_prep.png" id="2_xkb8e"]
+[ext_resource type="Texture2D" uid="uid://ce7t5xh3ypknk" path="res://images/wiche_prep_cauldron_mask.png" id="3_6oefe"]
 [ext_resource type="Script" path="res://scripts/ingredient_controller.gd" id="3_ap07x"]
-[ext_resource type="Texture2D" uid="uid://b3wg1vlk4tlof" path="res://images/cauldron.png" id="3_rty0y"]
 [ext_resource type="Script" path="res://scripts/liquids.gd" id="4_lbaw0"]
-[ext_resource type="Texture2D" uid="uid://1ju438gw7ptr" path="res://images/cauldron_shading.png" id="5_phjue"]
 [ext_resource type="Texture2D" uid="uid://b2q04m60qgu45" path="res://images/steamedwishes.png" id="6_fbjog"]
-[ext_resource type="PackedScene" uid="uid://bduby6k4bqake" path="res://scenes/steamed_wishes_liquid.tscn" id="7_keah1"]
+[ext_resource type="Shader" path="res://outline.gdshader" id="6_ga8ly"]
 [ext_resource type="Theme" uid="uid://cjx2o6xxwrd6q" path="res://default_theme.tres" id="7_sdjkw"]
 [ext_resource type="Texture2D" uid="uid://bofs7ooh2jadd" path="res://images/zestroot.png" id="9_cg7on"]
-[ext_resource type="PackedScene" uid="uid://dhalk1b52ytxd" path="res://scenes/zestroot_liquid.tscn" id="9_gtuxi"]
-[ext_resource type="PackedScene" uid="uid://svn6sei8r3l4" path="res://scenes/mushmellow_liquid.tscn" id="11_gl3gm"]
+[ext_resource type="Script" path="res://scripts/page_controller.gd" id="10_6f81l"]
+[ext_resource type="Texture2D" uid="uid://b2gwtdprq1r1p" path="res://images/steamed_wishes_left.png" id="11_77uns"]
 [ext_resource type="Texture2D" uid="uid://chuxxe4iw2pcu" path="res://images/mushmellow.png" id="11_gu63j"]
+[ext_resource type="Texture2D" uid="uid://bxvusb212bg6h" path="res://images/steamed_wishes_right.png" id="12_hnxk7"]
+[ext_resource type="Texture2D" uid="uid://n0hx3gdtwh8p" path="res://images/zestroot_left.png" id="13_uvaq2"]
+[ext_resource type="Texture2D" uid="uid://c5408w0wybr30" path="res://images/zestroot_right.png" id="14_td0j3"]
+[ext_resource type="Texture2D" uid="uid://bscs8cgrsd1a5" path="res://images/arrow.png" id="14_ywgvk"]
+[ext_resource type="Texture2D" uid="uid://108lcaiwtmes" path="res://images/mushmellow_left.png" id="15_e2hpf"]
+[ext_resource type="BitMap" uid="uid://bsu8qqngubg7m" path="res://images/arrow_mask.png" id="15_q0gmi"]
+[ext_resource type="Texture2D" uid="uid://yvswc5ibf2bh" path="res://images/mushmellow_right.png" id="16_7imkv"]
+[ext_resource type="Script" path="res://scripts/button_dim.gd" id="16_tsmac"]
 [ext_resource type="Script" path="res://scripts/ingredient_label.gd" id="24_v6iva"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yp0uh"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7ujfx"]
 blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_gnlh6"]
+colors = PackedColorArray(0.775063, 0.775063, 0.775063, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tr3t1"]
+gradient = SubResource("Gradient_gnlh6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8pui"]
+shader = ExtResource("6_ga8ly")
+shader_parameter/outline_alpha = 1.0
+shader_parameter/outline_color = Vector3(0.25, 0.1, 0.38)
+shader_parameter/search_radius = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ok1i"]
+shader = ExtResource("6_ga8ly")
+shader_parameter/outline_alpha = 1.0
+shader_parameter/outline_color = Vector3(0.25, 0.1, 0.38)
+shader_parameter/search_radius = 0.02
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o27f"]
 bg_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
@@ -40,70 +65,179 @@ script = ExtResource("1_bfqwn")
 layout_mode = 0
 offset_right = 3840.0
 offset_bottom = 2160.0
-texture = ExtResource("2_r7ytm")
+texture = ExtResource("2_xkb8e")
 
-[node name="Liquids" type="TextureRect" parent="."]
-clip_children = 1
-layout_mode = 0
-offset_right = 3840.0
-offset_bottom = 2160.0
-texture = ExtResource("3_rty0y")
-script = ExtResource("4_lbaw0")
-
-[node name="CauldronShading" type="TextureRect" parent="."]
-material = SubResource("CanvasItemMaterial_yp0uh")
+[node name="TextureRect" type="TextureRect" parent="Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_phjue")
+texture = ExtResource("3_6oefe")
 
-[node name="IngredientList" type="HFlowContainer" parent="."]
-process_mode = 3
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = 150.0
-grow_horizontal = 2
-size_flags_vertical = 0
-alignment = 1
+[node name="Liquids" type="TextureRect" parent="."]
+clip_children = 1
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+texture = ExtResource("3_6oefe")
+script = ExtResource("4_lbaw0")
 
-[node name="SteamedWishes" type="TextureButton" parent="IngredientList"]
-custom_minimum_size = Vector2(0, 150)
+[node name="Coffee" type="ColorRect" parent="Liquids"]
+layout_mode = 0
+offset_left = 2236.0
+offset_top = 1539.0
+offset_right = 3236.0
+offset_bottom = 1910.0
+color = Color(0.37, 0.26825, 0.185, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Liquids"]
+material = SubResource("CanvasItemMaterial_7ujfx")
+layout_mode = 0
+offset_left = 3258.0
+offset_top = 1124.0
+offset_right = 4028.0
+offset_bottom = 2099.0
+rotation = 1.5708
+texture = SubResource("GradientTexture1D_tr3t1")
+
+[node name="SteamedWishes" type="TextureButton" parent="."]
+material = SubResource("ShaderMaterial_e8pui")
 layout_mode = 2
+offset_left = 1061.0
+offset_top = 97.0
+offset_right = 1361.0
+offset_bottom = 397.0
+pivot_offset = Vector2(150, 300)
 texture_normal = ExtResource("6_fbjog")
 stretch_mode = 5
 script = ExtResource("3_ap07x")
-liquid = ExtResource("7_keah1")
+liquid_color = Color(0.6512, 0.746533, 0.88, 1)
 description = "- Emotional
 - Sweet & Rich"
 
-[node name="Zestroot" type="TextureButton" parent="IngredientList"]
+[node name="Zestroot" type="TextureButton" parent="."]
+material = SubResource("ShaderMaterial_e8pui")
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+offset_left = 1944.0
+offset_top = 385.0
+offset_right = 2244.0
+offset_bottom = 685.0
+pivot_offset = Vector2(150, 300)
 texture_normal = ExtResource("9_cg7on")
 stretch_mode = 5
 script = ExtResource("3_ap07x")
 type = 1
-liquid = ExtResource("9_gtuxi")
+liquid_color = Color(0.87, 0.5133, 0.745155, 1)
 description = "- Invigorating
 - Sour & Citrusy"
 
-[node name="Mushmellow" type="TextureButton" parent="IngredientList"]
+[node name="Mushmellow" type="TextureButton" parent="."]
+material = SubResource("ShaderMaterial_e8pui")
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+offset_left = 2633.0
+offset_top = 156.0
+offset_right = 2933.0
+offset_bottom = 456.0
+pivot_offset = Vector2(30.36, 300)
 texture_normal = ExtResource("11_gu63j")
 stretch_mode = 5
 script = ExtResource("3_ap07x")
 type = 2
-liquid = ExtResource("11_gl3gm")
+liquid_color = Color(0.82, 0.72406, 0.6068, 1)
 description = "- Relaxing
 - Aromatic & Earthy"
+
+[node name="Pages" type="Control" parent="." node_paths=PackedStringArray("left_pages", "right_pages")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("10_6f81l")
+left_pages = [NodePath("SteamedWishesLeft"), NodePath("ZestrootLeft"), NodePath("MushmellowLeft")]
+right_pages = [NodePath("SteamedWishesRight"), NodePath("ZestrootRight"), NodePath("MushmellowRight")]
+
+[node name="SteamedWishesLeft" type="TextureRect" parent="Pages"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_77uns")
+
+[node name="SteamedWishesRight" type="TextureRect" parent="Pages"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12_hnxk7")
+
+[node name="ZestrootLeft" type="TextureRect" parent="Pages"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_uvaq2")
+
+[node name="ZestrootRight" type="TextureRect" parent="Pages"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("14_td0j3")
+
+[node name="MushmellowLeft" type="TextureRect" parent="Pages"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("15_e2hpf")
+
+[node name="MushmellowRight" type="TextureRect" parent="Pages"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_7imkv")
+
+[node name="NextPage" type="TextureButton" parent="Pages"]
+material = SubResource("ShaderMaterial_2ok1i")
+layout_mode = 0
+offset_left = 1482.0
+offset_top = 1189.0
+offset_right = 1994.0
+offset_bottom = 1701.0
+rotation = -0.244346
+scale = Vector2(0.505, 0.505)
+texture_normal = ExtResource("14_ywgvk")
+texture_click_mask = ExtResource("15_q0gmi")
+script = ExtResource("16_tsmac")
+
+[node name="Center" type="Marker2D" parent="Pages"]
+position = Vector2(776, 1387)
 
 [node name="ServeButton" type="Button" parent="."]
 layout_mode = 1
@@ -135,6 +269,7 @@ theme = ExtResource("7_sdjkw")
 text = "Restart"
 
 [node name="IngredientLabel" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 754.0
 offset_bottom = 235.0
@@ -144,5 +279,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5o27f")
 text = "Steamed Wishes
 This is the description"
 script = ExtResource("24_v6iva")
+offset = Vector2(50, 50)
 
 [connection signal="on_reset" from="." to="Liquids" method="_on_coffee_on_reset"]

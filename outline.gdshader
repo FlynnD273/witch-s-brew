@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform float outline_alpha = 1.;
-uniform vec3 outline_color = vec3(1, 1, 1);
+uniform vec3 outline_color = vec3(0.25, 0.1, 0.38);
 uniform float search_radius = 0.02;
 
 void fragment() {

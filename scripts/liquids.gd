@@ -1,16 +1,15 @@
 extends TextureRect
 
 var inc_height: float = 100
-var start_pos := Vector2(1300, 1900)
 @export var reset_duration: float = 1
 @export var pour_duration: float = 0.5
 
-var ingredients: Array[Node2D] = []
+var ingredients: Array[Control] = []
 
 func _on_coffee_on_reset() -> void:
   for i in ingredients:
     var tween := create_tween()
-    tween.tween_property(i, "position", start_pos + Vector2.DOWN * inc_height, reset_duration).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+    tween.tween_property(i, "position", $Coffee.position + Vector2.DOWN * inc_height, reset_duration).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
   var old_ingredients:= ingredients.duplicate()
   ingredients = []
 
@@ -20,14 +19,16 @@ func _on_coffee_on_reset() -> void:
     i.queue_free()
 
 
-func add_ingredient(new_ing: PackedScene) -> void:
-  if ingredients.size() >= 10:
-    return
-  var i: Node2D = new_ing.instantiate()
-  i.position = start_pos + Vector2.UP * inc_height * (ingredients.size() - 1)
+func add_ingredient(new_ing: Color) -> void:
+  var num_ing := ingredients.size()
+  print(num_ing)
+  var i: ColorRect = ColorRect.new()
+  i.size = Vector2(1200, 100)
+  i.color = new_ing
+  i.position = $Coffee.position + Vector2.UP * inc_height * num_ing
   add_child(i)
   move_child(i, 0)
   var tween = create_tween()
-  tween.tween_property(i, "position", start_pos + Vector2.UP * inc_height * ingredients.size(), pour_duration).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
   ingredients.append(i)
+  tween.tween_property(i, "position", $Coffee.position + Vector2.UP * inc_height * (num_ing + 1), pour_duration).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
   await get_tree().create_timer(pour_duration).timeout

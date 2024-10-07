@@ -17,8 +17,8 @@ func _process(_delta: float) -> void:
 func _set_ingredient(newValue: IngredientController) -> void:
   _ingredient = newValue
   var ing_name: String = Coffee.Ingredient.keys()[ingredient.type].capitalize()
-  text = "%s\n%s" % [ing_name, ingredient.description]
-  size = theme.get_font("", "").get_multiline_string_size(text)
+  text = ing_name
+  size = theme.get_font("", "").get_string_size(text)
 
 func _get_ingredient() -> IngredientController:
   return _ingredient

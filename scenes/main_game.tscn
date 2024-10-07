@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/main_game.gd" id="1_wyfvg"]
 [ext_resource type="Script" path="res://scripts/transition.gd" id="2_siffl"]
 [ext_resource type="Theme" uid="uid://cjx2o6xxwrd6q" path="res://default_theme.tres" id="3_jgn6h"]
-[ext_resource type="Texture2D" uid="uid://c1cqqu70uind5" path="res://images/witchesroom.png" id="4_0yqql"]
+[ext_resource type="Texture2D" uid="uid://c1cqqu70uind5" path="res://images/wiche_room.png" id="4_0yqql"]
 
 [node name="MainGame" type="Control"]
 layout_mode = 3

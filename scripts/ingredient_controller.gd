@@ -3,10 +3,10 @@ extends TextureButton
 class_name IngredientController
 
 @export var type: Coffee.Ingredient = Coffee.Ingredient.SteamedWishes
-@export var liquid: PackedScene = null
+@export var liquid_color: Color = Color.WHITE
 @export_multiline var description: String = ""
 
-var start_size: float
+var start_scale: Vector2
 var hover_scale: float = 1.25
 var was_paused: bool = false
 var is_focused: = false: set = _set_focused, get = _get_focused
@@ -20,8 +20,7 @@ func _ready() -> void:
   button_up.connect(_button_up)
   mouse_entered.connect(_mouse_entered)
   mouse_exited.connect(_mouse_exited)
-  start_size = size.x
-  custom_minimum_size.y = start_size*hover_scale
+  start_scale = scale
 
 func _process(_delta: float) -> void:
   if was_paused and !tree.paused:
@@ -35,7 +34,7 @@ func _button_down() -> void:
 
 func _button_up() -> void:
   if is_clicked and is_focused and !tree.paused:
-    Coffee.instance.add_ingredient(type, liquid)
+    Coffee.instance.add_ingredient(type, liquid_color)
   is_clicked = false
 
 func _set_pressed(newValue: bool) -> void:
@@ -58,12 +57,12 @@ func _set_focused(newValue: bool) -> void:
     return
   if is_focused:
     var tween := create_tween()
-    tween.tween_property(self, "custom_minimum_size", Vector2(start_size * hover_scale, size.y), 0.25).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT)
+    tween.tween_property(self, "scale", start_scale * hover_scale, 0.25).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT)
     Coffee.instance.ingredient_label.ingredient = self
     Coffee.instance.ingredient_label.show()
   else:
     var tween := create_tween()
-    tween.tween_property(self, "custom_minimum_size", Vector2(start_size, size.y), 0.25).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT)
+    tween.tween_property(self, "scale", start_scale, 0.25).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN_OUT)
     if Coffee.instance.ingredient_label.ingredient == self:
       Coffee.instance.ingredient_label.hide()
 

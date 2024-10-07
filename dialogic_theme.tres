@@ -20,7 +20,9 @@ overrides = {}
 [sub_resource type="Resource" id="Resource_p2be0"]
 script = ExtResource("1_tspae")
 scene = ExtResource("3_juxex")
-overrides = {}
+overrides = {
+"portrait_size_mode": "0"
+}
 
 [sub_resource type="Resource" id="Resource_dcpdg"]
 script = ExtResource("1_tspae")

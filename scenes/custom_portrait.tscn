@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wusr3"]
 shader = ExtResource("2_8c26o")
 shader_parameter/outline_alpha = 1.0
-shader_parameter/outline_color = Vector3(1, 1, 1)
+shader_parameter/outline_color = Vector3(0.25, 0.1, 0.38)
 shader_parameter/search_radius = 0.02
 
 [node name="customPortrait" type="Marker2D"]

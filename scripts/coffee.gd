@@ -24,7 +24,7 @@ func _ready() -> void:
   $RestartButton.pressed.connect(reset)
   $ServeButton.pressed.connect(serve)
 
-func add_ingredient(type: Ingredient, liquid: PackedScene) -> void:
+func add_ingredient(type: Ingredient, liquid: Color) -> void:
   if type in current_ingredients:
     return
   current_ingredients.append(type)
