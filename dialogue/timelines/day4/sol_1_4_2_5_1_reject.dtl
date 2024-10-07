@@ -1,0 +1,3 @@
+join darnery left
+join solephanie right [wait="true" mirrored="true"]
+solephanie: That's not quite right[lspeed=0.1]...[lspeed]

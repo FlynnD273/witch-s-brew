@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="DialogicStyle" load_steps=19 format=3 uid="uid://comoxg58w3xss"]
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=21 format=3 uid="uid://comoxg58w3xss"]
 
 [ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_tspae"]
 [ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="2_7scie"]
 [ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn" id="3_flxmv"]
+[ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://5Portraits/custom_vn_portrait_layer.tscn" id="3_juxex"]
 [ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="4_smobv"]
 [ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="5_67y4j"]
 [ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="6_penbe"]
@@ -16,9 +17,9 @@ script = ExtResource("1_tspae")
 scene = ExtResource("2_7scie")
 overrides = {}
 
-[sub_resource type="Resource" id="Resource_83n8y"]
+[sub_resource type="Resource" id="Resource_p2be0"]
 script = ExtResource("1_tspae")
-scene = ExtResource("3_flxmv")
+scene = ExtResource("3_juxex")
 overrides = {}
 
 [sub_resource type="Resource" id="Resource_dcpdg"]
@@ -61,6 +62,11 @@ script = ExtResource("1_tspae")
 scene = ExtResource("9_vg16d")
 overrides = {}
 
+[sub_resource type="Resource" id="Resource_ud535"]
+script = ExtResource("1_tspae")
+scene = ExtResource("3_flxmv")
+overrides = {}
+
 [resource]
 script = ExtResource("10_mrjcf")
 name = "dialogic_theme"
@@ -68,5 +74,5 @@ base_overrides = {
 "global_font": "\"res://fonts/dancing-script/DancingScript-Medium.ttf\"",
 "global_font_size": "96.0"
 }
-layers = Array[ExtResource("1_tspae")]([SubResource("Resource_e7t7p"), SubResource("Resource_83n8y"), SubResource("Resource_dcpdg"), SubResource("Resource_y0h74"), SubResource("Resource_y2g68"), SubResource("Resource_oawwn"), SubResource("Resource_ldims"), SubResource("Resource_a0w4n")])
+layers = Array[ExtResource("1_tspae")]([SubResource("Resource_e7t7p"), SubResource("Resource_p2be0"), SubResource("Resource_dcpdg"), SubResource("Resource_y0h74"), SubResource("Resource_y2g68"), SubResource("Resource_oawwn"), SubResource("Resource_ldims"), SubResource("Resource_a0w4n"), SubResource("Resource_ud535")])
 metadata/_latest_layer = 1

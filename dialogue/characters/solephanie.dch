@@ -13,7 +13,7 @@
 "display_name": "Solephanie",
 "mirror": false,
 "nicknames": [""],
-"offset": Vector2(0, -815),
+"offset": Vector2(0, 0),
 "portraits": {
 "default": {
 "export_overrides": {

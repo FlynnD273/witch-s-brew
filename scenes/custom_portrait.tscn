@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/custom_portrait.gd" id="1_bvlar"]
 [ext_resource type="Texture2D" uid="uid://blkossxyd8k7v" path="res://images/koaraok/default.png" id="2_0h5f0"]
-[ext_resource type="Shader" path="res://outline2.gdshader" id="2_8c26o"]
+[ext_resource type="Shader" path="res://outline.gdshader" id="2_8c26o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wusr3"]
 shader = ExtResource("2_8c26o")
@@ -11,6 +11,7 @@ shader_parameter/outline_color = Vector3(1, 1, 1)
 shader_parameter/search_radius = 0.02
 
 [node name="customPortrait" type="Marker2D"]
+process_priority = -1
 script = ExtResource("1_bvlar")
 metadata/texture_holder_node = NodePath("")
 

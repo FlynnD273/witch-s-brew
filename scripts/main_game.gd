@@ -93,16 +93,33 @@ func day_four() -> void:
       last_drink = await make_coffee()
       loop = false
       match last_drink:
-        4:
+        5:
           pass
         _:
-          await start_timeline("sol_3_5_1_reject")
+          await start_timeline("sol_3_4_1_reject")
           loop = true
     give_mix(Character.Solephanie, last_drink)
     await start_timeline("sol_2_4_1_5_2")
   else:
     await start_timeline("sol_1_4_2_5_1")
-    await serve_sol()
+    var loop := true
+    while loop:
+      last_drink = await make_coffee()
+      loop = false
+      match last_drink:
+        4:
+          pass
+        5:
+          pass
+        _:
+          await start_timeline("sol_1_4_2_5_1_reject")
+          loop = true
+    give_mix(Character.Solephanie, last_drink)
+
+
+  await start_timeline("outro_1")
+  await make_coffee()
+  await start_timeline("outro_2")
 
 func day_three() -> void:
   if characterStats[Character.Solephanie][4] == 2:
@@ -173,8 +190,6 @@ func day_zero() -> void:
   await cof.on_serve
   cof.queue_free()
   await start_timeline("3")
-
-
 
 func new_day() -> void:
   day += 1

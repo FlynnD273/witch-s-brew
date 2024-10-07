@@ -13,11 +13,47 @@
 "display_name": "Sir Darnery",
 "mirror": false,
 "nicknames": [""],
-"offset": Vector2(0, -815),
+"offset": Vector2(0, 0),
 "portraits": {
+"anxious": {
+"export_overrides": {
+"image": "\"res://images/darnery/anxious.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
 "default": {
 "export_overrides": {
 "image": "\"res://images/darnery/default.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"mad": {
+"export_overrides": {
+"image": "\"res://images/darnery/mad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"sigh": {
+"export_overrides": {
+"image": "\"res://images/darnery/sigh.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"smile": {
+"export_overrides": {
+"image": "\"res://images/darnery/smile.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

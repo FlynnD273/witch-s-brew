@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy1y14inwkplb"]
+
+[ext_resource type="Script" path="res://5Portraits/vn_portrait_layer.gd" id="1_1i7em"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="1_rxdcc"]
+[ext_resource type="Texture2D" uid="uid://c1cqqu70uind5" path="res://images/witchesroom.png" id="2_qqcjt"]
+
+[node name="VN_PortraitLayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_1i7em")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qqcjt")
+
+[node name="Portraits" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DialogicNode_PortraitContainer1" type="Control" parent="Portraits"]
+layout_mode = 1
+anchor_left = 0.0880208
+anchor_top = -0.176389
+anchor_right = 0.288021
+anchor_bottom = 0.823611
+offset_bottom = -0.00012207
+grow_vertical = 2
+pivot_offset = Vector2(115.2, 648)
+mouse_filter = 2
+script = ExtResource("1_rxdcc")
+container_ids = PackedStringArray("left", "0")
+metadata/_edit_use_anchors_ = true
+
+[node name="DialogicNode_PortraitContainer2" type="Control" parent="Portraits"]
+layout_mode = 1
+anchor_left = 0.695573
+anchor_top = -0.174074
+anchor_right = 0.897938
+anchor_bottom = 0.825926
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_rxdcc")
+container_ids = PackedStringArray("right", "1")
+mirrored = true
+metadata/_edit_use_anchors_ = true

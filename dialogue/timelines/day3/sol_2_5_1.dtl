@@ -1,2 +1,2 @@
-join darnery center
-darnery: Coffee. Plain[lspeed=0.1]...[lspeed] please.
+join darnery left [animation="Fade In Down" wait="true"]
+darnery (anxious): Coffee. Plain[lspeed=0.1]...[lspeed] please.
